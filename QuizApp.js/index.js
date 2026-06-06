@@ -23,6 +23,7 @@ const questions = [{
 
 let currentIndex = 0;
 let score = 0;
+let locked = false;
 
 const questionEl= document.getElementById("question");
 const options = document.querySelector(".options");
@@ -43,6 +44,8 @@ function loadQuestion() {
     btn.innerText = option;
 
     btn.addEventListener("click", () => {
+      if(locked) return;
+      locked = true;
       if (index === q.answer) {
         score++;
         btn.style.background = "green";
